@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Register - Home Cafe Food</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="brand"><span>Home Cafe Food</span></div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="spacer"></div>
+    <label class="theme-toggle">
+      <input type="checkbox" id="themeSwitch">
+      <span class="dot"></span>
+    </label>
+  </nav>
+
+  <!-- Auth Card -->
+  <div class="form-card">
+    <div class="form-tabs">
+      <button id="loginTab" class="btn active">Login</button>
+      <button id="registerTab" class="btn">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" action="login.php" method="POST">
+      <div class="form-grid">
+        <div class="input">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+        </div>
+        <button class="btn" type="submit">Login</button>
+      </div>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" action="register.php" method="POST" style="display:none;">
+      <div class="form-grid">
+        <div class="input">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Choose a username" required>
+        </div>
+        <div class="input">
+          <label for="regEmail">Email</label>
+          <input type="email" id="regEmail" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input">
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" name="password" placeholder="Create a password" required>
+        </div>
+        <div class="input">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm your password" required>
+        </div>
+        <button class="btn" type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="cols">
+      <div>
+        <h4>Home Cafe Food</h4>
+        <p>Create an account or log in to explore recipes and manage your favorites.</p>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="#">🌐 Facebook</a><br>
+        <a href="#">📸 Instagram</a><br>
+        <a href="#">🐦 Twitter</a>
+      </div>
+    </div>
+    <p class="legal">© 2025 Home Cafe Food</p>
+  </footer>
+
+  <!-- Tab Switch Script -->
+  <script>
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+
+    loginTab.addEventListener("click", () => {
+      loginTab.classList.add("active");
+      registerTab.classList.remove("active");
+      loginForm.style.display = "block";
+      registerForm.style.display = "none";
+    });
+
+    registerTab.addEventListener("click", () => {
+      registerTab.classList.add("active");
+      loginTab.classList.remove("active");
+      registerForm.style.display = "block";
+      loginForm.style.display = "none";
+    });
+  </script>
+</body>
+</html>

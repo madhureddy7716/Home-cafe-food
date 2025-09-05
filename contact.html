@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Home Cafe Food</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand"><span>Home Cafe Food</span></div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="auth.html">Login / Register</a>
+    <div class="spacer"></div>
+    <label class="theme-toggle">
+      <input type="checkbox" id="themeSwitch">
+      <span class="dot"></span>
+    </label>
+  </nav>
+
+  <div class="form-card">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <div class="form-grid">
+        <div class="input">
+          <label>Name</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="input">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="input">
+          <label>Message</label>
+          <textarea name="message" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="cols">
+      <div>
+        <h4>Home Cafe Food</h4>
+        <p>We’d love to hear from you.</p>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <a href="#">🌐 Facebook</a><br>
+        <a href="#">📸 Instagram</a><br>
+        <a href="#">🐦 Twitter</a>
+      </div>
+    </div>
+    <p class="legal">© 2025 Home Cafe Food</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", e => {
+      e.preventDefault();
+      alert("✅ Thanks for your message! (Demo only, no server)");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

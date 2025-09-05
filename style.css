@@ -1,0 +1,228 @@
+/* =========================
+   Bite Food – Unified Styles
+   ========================= */
+
+/* ---- Theme Colors ---- */
+:root {
+  --bg: #0b1220;
+  --surface: #121a2b;
+  --muted-surface: #0e1626;
+  --text: #e6edf3;
+  --text-muted: #b6c2cf;
+  --primary: #22c55e;
+  --accent: #60a5fa;
+  --danger: #ef4444;
+  --border: 1px solid rgba(255,255,255,.08);
+  --card-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+:root[data-theme="light"] {
+  --bg: #f7fafc;
+  --surface: #ffffff;
+  --muted-surface: #f0f4f8;
+  --text: #111827;
+  --text-muted: #475569;
+  --primary: #16a34a;
+  --accent: #2563eb;
+  --border: 1px solid rgba(2,6,23,.08);
+  --card-shadow: 0 8px 24px rgba(2,6,23,.08);
+}
+
+/* ---- Reset ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial;
+  color: var(--text);
+
+  /* Local Screenshot Background */
+  background: 
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("background.png") no-repeat center center fixed;
+  background-size: cover;
+
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Navbar ---- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px) saturate(140%);
+  background: linear-gradient(180deg, rgba(15,23,42,.85), rgba(2,6,23,.6));
+  border-bottom: var(--border);
+  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+:root[data-theme="light"] .navbar {
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(248,250,252,.95));
+}
+.navbar .brand {
+  display: flex; align-items: center; gap: .5rem;
+  font-weight: 700;
+}
+.navbar .brand img {
+  width: 36px; height: 36px; border-radius: 30px; object-fit: cover;
+}
+.navbar a {
+  color: var(--text);
+  text-decoration: none;
+  padding: .5rem .75rem;
+  border-radius: .6rem;
+  transition: 0.2s;
+}
+.navbar a:hover {
+  background: var(--muted-surface);
+}
+.navbar .spacer { flex: 1 1 auto; }
+
+/* ---- Dark/Light Toggle ---- */
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--muted-surface);
+  border: var(--border);
+  border-radius: 999px;
+  padding: .25rem .6rem;
+  cursor: pointer;
+}
+.theme-toggle input { display: none; }
+.theme-toggle .dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,.2);
+}
+
+/* ---- Hero + Search ---- */
+header.hero {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  padding: 2.5rem 1rem 1rem;
+}
+.hero h1 { margin: 0; font-size: clamp(1.8rem, 2.5vw, 2.4rem); color: var(--text); }
+.searchbar {
+  display: flex; gap: .5rem; width: min(800px, 100%);
+}
+.searchbar input {
+  flex: 1;
+  padding: .85rem 1rem;
+  border-radius: .9rem;
+  border: var(--border);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+.btn {
+  border: none;
+  border-radius: .9rem;
+  padding: .85rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--primary), color-mix(in oklab, var(--primary), black 18%));
+  color: white;
+  box-shadow: 0 8px 16px rgba(34,197,94,.3);
+  transition: 0.2s;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+
+/* ---- Recipe Cards ---- */
+#items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+.card {
+  background: var(--surface);
+  border: var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: 0.2s;
+}
+.card:hover { transform: translateY(-3px); }
+.card img {
+  width: 100%; height: 160px; object-fit: cover;
+}
+.card .card-body { padding: .9rem; text-align: center; }
+
+/* ---- Forms (Login / Register / Contact) ---- */
+.form-card {
+  background: var(--surface);
+  border: var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem;
+  width: min(520px, 100%);
+  margin: 2rem auto;
+}
+.form-card h2 { margin-bottom: 1rem; }
+.form-grid { display: grid; gap: .9rem; }
+.input { display: grid; gap: .35rem; }
+.input label { font-size: .9rem; color: var(--text-muted); }
+.input input, .input textarea {
+  padding: .8rem 1rem;
+  border-radius: .8rem;
+  border: var(--border);
+  background: var(--muted-surface);
+  color: var(--text);
+}
+.input textarea { resize: vertical; min-height: 120px; }
+
+/* ---- Auth Tabs ---- */
+.form-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: .5rem;
+}
+.form-tabs .btn {
+  flex: 1;
+  background: var(--muted-surface);
+  color: var(--text);
+  border-radius: .6rem;
+  border: var(--border);
+  padding: .6rem;
+}
+.form-tabs .btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* ---- Footer ---- */
+.footer {
+  margin-top: auto;
+  border-top: var(--border);
+  background: linear-gradient(180deg, rgba(2,6,23,.4), rgba(2,6,23,.7));
+  padding: 2rem 1rem;
+}
+.footer .cols {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.footer h4 { margin: 0 0 .5rem; }
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--text); }
+.footer .legal {
+  margin-top: 1rem; color: var(--text-muted);
+  font-size: .9rem; text-align: center;
+}
+
+/* ---- Messages ---- */
+#msg {
+  text-align: center;
+  color: var(--danger);
+  display: none;
+  margin: 1rem 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .searchbar { flex-direction: column; }
+}
